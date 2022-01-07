@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.galvanize.tmo.paspringstarter.models.Book;
+import com.galvanize.tmo.paspringstarter.models.Books;
 import com.galvanize.tmo.paspringstarter.service.BookService;
 
 @RestController
@@ -35,12 +36,13 @@ public class LibraryController {
     }
 
     @GetMapping("/api/books") 
-    public ResponseEntity<List<Book>> getBooks() {
-    	List<Book> listBooks = service.getBooks();
-    	if(listBooks.isEmpty()) {
+    public ResponseEntity<Books> getBooks() {
+    	Books books = new Books();
+    	books.setBooks(service.getBooks());
+    	if(books.getBooks().isEmpty()) {
     		return ResponseEntity.notFound().build();
     	} else {
-    		return ResponseEntity.ok().body(listBooks);	
+    		return ResponseEntity.ok().body(books);	
     	}
     }
     
