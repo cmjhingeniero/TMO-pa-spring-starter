@@ -16,8 +16,9 @@ public class Book {
 		super();
 	}
 
-	public Book(String author, String title, int yearPublished) {
+	public Book(Long id, String author, String title, int yearPublished) {
 		super();
+		this.id = id;
 		this.author = author;
 		this.title = title;
 		this.yearPublished = yearPublished;

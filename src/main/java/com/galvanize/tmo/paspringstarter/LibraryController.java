@@ -38,7 +38,7 @@ public class LibraryController {
     @GetMapping("/api/books") 
     public ResponseEntity<List<Book>> getBooks() {
     	List<Book> listBooks = service.getBooks();
-    	if(Objects.isNull(listBooks) || listBooks.isEmpty()) {
+    	if(listBooks.isEmpty()) {
     		return ResponseEntity.notFound().build();
     	} else {
     		return ResponseEntity.ok().body(listBooks);	
