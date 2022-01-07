@@ -1,6 +1,7 @@
 package com.galvanize.tmo.paspringstarter;
 
 import java.util.List;
+import java.util.Objects;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,8 +36,13 @@ public class LibraryController {
     }
 
     @GetMapping("/api/books") 
-    public List<Book> getBooks() {
-    	return service.getBooks();
+    public ResponseEntity<List<Book>> getBooks() {
+    	List<Book> listBooks = service.getBooks();
+    	if(Objects.isNull(listBooks) || listBooks.isEmpty()) {
+    		return ResponseEntity.notFound().build();
+    	} else {
+    		return ResponseEntity.ok().body(listBooks);	
+    	}
     }
     
     @DeleteMapping("/api/books")
