@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.galvanize.tmo.paspringstarter.models.Book;
@@ -28,6 +29,7 @@ public class LibraryController {
     }
     
     @PostMapping("/api/books")
+    @ResponseStatus(HttpStatus.CREATED)
     public Book addBooks(@RequestBody Book book) {
     	return service.addBook(book);
     }
