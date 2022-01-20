@@ -24,7 +24,7 @@ public class LibraryController {
 	
     @GetMapping("/health")
     public ResponseEntity<String> health() {
-    	return ResponseEntity.ok().body("Service up");
+    	return ResponseEntity.ok().body("Service up. Develop");
     }
     
     @PostMapping("/api/books")
