@@ -1,7 +1,5 @@
 package com.galvanize.tmo.paspringstarter;
 
-import java.util.List;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -25,8 +23,8 @@ public class LibraryController {
 	}
 	
     @GetMapping("/health")
-    public void health() {
-
+    public ResponseEntity<String> health() {
+    	return ResponseEntity.ok().body("Service up");
     }
     
     @PostMapping("/api/books")
